@@ -1,45 +1,21 @@
 package att1;
+
 public class Main {
-    public static void main(String[] args) throws Exception {
-        int[][] array = { {5, 4, 9}, {3, 2, 7}, {8, 1, 6}};
-        for(int i = 0; i < array.length; i++) {
-            int[] aux = new int[array[i].length];
-            mergeSort(array[i], aux, 0, array.length - 1);
-        }
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[0].length; j++) {
-                System.out.print(array[i][j] + " ");
-            }
-            System.out.println();
-        }
-        
+    public static void main(String[] args) {
+        String word = "gustavo";
+        isPalindrome(word, 0,word.length()-1);
     }
 
-    public static void mergeSort(int[] array, int[] aux, int begin, int end) {
-        if (begin < end){
-            int middle = (begin + end) / 2;
-            mergeSort(array, aux, begin, middle);
-            mergeSort(array, aux, middle + 1, end);
-            intercalation(array, aux, begin, middle, end);
+    public static void isPalindrome(String word, int begin, int end){
+        word = word.toLowerCase();
+        if (begin>end) {
+            System.out.println("Is Palindrome");
+            return;
+        }if (word.charAt(begin) == word.charAt(end)){
+            isPalindrome(word, begin +1, end-1);
+            return;
         }
-    }
-
-    private static void intercalation(int[] array, int[] aux, int begin, int middle, int end) {
-        for (int i = begin; i <= end; i++) {
-            aux[i] = array[i];
-        }
-        int left = begin;
-        int right = middle + 1;
-        for (int i = begin; i <= end; i++) {
-            if (left > middle) {
-                array[i] = aux[right++];
-            } else if (right > end) {
-                array[i] = aux[left++];
-            } else if (aux[left] < aux[right]) {
-                array[i] = aux[left++];
-            } else {
-                array[i] = aux[right++];
-            }
-        }
+        System.out.println("Not Palindrome");
+        return;
     }
 }

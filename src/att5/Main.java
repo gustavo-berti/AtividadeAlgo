@@ -2,10 +2,15 @@ package att5;
 
 public class Main {
     public static void main(String[] args) {
-        int[] array = {1, 4, 5};
-        System.err.println(sumArray(array));
+        int result = sum(145);
+        System.out.println(result);
     }
-    public static int sumArray(int[] array){
-        return 0;
+
+    public static int sum(int num) {
+        if (num < 10) {
+            return num;
+        } else {
+            return (num % 10) + sum(num / 10);
+        }
     }
 }

@@ -1,5 +1,4 @@
-package att2;
-
+package att8;
 public class People {
     private String name;
     private int age;
